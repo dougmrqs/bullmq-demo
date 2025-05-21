@@ -10,8 +10,8 @@ function buildServer() {
   fastify.get('/', async () => {
     console.log('Request received');
     
-    console.log('Enqueuing a job');
-    queue.add('my-job', {});
+    console.log('Enqueuing 100 jobs');
+    await enqueueHundredJobs();
 
     return { message: 'hello world' };
   });
@@ -19,6 +19,12 @@ function buildServer() {
   fastify.listen({ port: 3000 }, (_, address) => {
     console.log(`Server is listening on ${address}`);
   });
+}
+
+async function enqueueHundredJobs() {
+  for (let i = 0; i < 100; i++) {
+    await queue.add('my-job', {});
+  }
 }
 
 buildServer();
