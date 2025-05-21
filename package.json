@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bullmq": "^5.52.1",
     "fastify": "^5.3.2"
   }
 }
