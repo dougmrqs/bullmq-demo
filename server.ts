@@ -1,11 +1,6 @@
 import Fastify from 'fastify';
-import { Queue, Worker } from 'bullmq';
-
-const QUEUE_NAME = 'my-queue';
-const redisConnection = {
-  host: 'localhost',
-  port: 6379,
-}
+import { Queue } from 'bullmq';
+import { QUEUE_NAME, redisConnection } from './config.ts';
 
 const queue = new Queue(QUEUE_NAME, { connection: redisConnection });
 
@@ -26,13 +21,4 @@ function buildServer() {
   });
 }
 
-function runWorkers() {
-  new Worker('my-queue', async (job) => {
-    console.log('Processing job:', job.id);
-  }, {
-    connection:  redisConnection
-  });  
-}
-
 buildServer();
-runWorkers();
