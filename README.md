@@ -51,3 +51,12 @@ npm run workers:sandboxed
 ```bash
 npm run docker:reset
 ```
+
+## Examples
+
+The `examples/` folder contains standalone demonstrations of specific BullMQ features. Each example has its own README with instructions.
+
+| Example | Description |
+|---|---|
+| [`flow-producer`](examples/flow-producer/README.md) | Two-phase newsletter pipeline using `FlowProducer` with parent-child job dependencies |
+| [`bullboard`](examples/bullboard/README.md) | Bull Board UI for monitoring queues in the browser |
